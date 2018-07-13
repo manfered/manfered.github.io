@@ -41,8 +41,8 @@
 function login(form) {
 	var phone = window.phone = PHONE({
 	    number        : form.username.value || "Anonymous", // listen on username line else Anonymous
-	    publish_key   : 'pub-c-c90272cc-9c4c-492f-aaf3-ce5a7d475ba3',
-	    subscribe_key : 'sub-c-f61675ac-606d-11e8-a470-425dbd502137',
+	    publish_key   : 'pub-c-5b60a353-a4c7-4821-b631-af304f64a7ec',
+	    subscribe_key : 'sub-c-8cc52846-606d-11e8-8fc9-4adc6d6a94eb',
 	});	
 	phone.ready(function(){ form.username.style.background="#55ff5b"; });
 	phone.receive(function(session){
