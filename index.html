@@ -77,10 +77,11 @@ function makeCall(form){
 		if (!window.phone) alert("Login First!");
 		var num = form.number.value;
 		if (phone.number()==num) return false; // No calling yourself!
-		ctrl.isOnline(num, function(isOn){		// Check if other user is listening for calls
+		/*ctrl.isOnline(num, function(isOn){		// Check if other user is listening for calls
 			if (isOn) ctrl.dial(num);		// Dial if they are online
 			else alert("User if Offline");	// Alert if not
-		});
+		});*/
+		ctrl.dial(num);
 		return false; // So form does not submit
 }
 
