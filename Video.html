@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<header>
+
+	<script type="text/javascript">
+	    var host = "manfered.github.io";
+	    if ((host == window.location.host) && (window.location.protocol != "https:"))
+	        window.location.protocol = "https";
+	</script>
+
+	
+</header>
+<body>
+<h1>Hello ClaimTab</h1>
+<p>Welcome to the group chat experience!</p>
+
+
+<div id="vid-box"></div>
+<div id="vid-thumb"></div>
+
+<form name="loginForm" id="login" action="#" onsubmit="return login(this);">
+    <input type="text" name="username" id="username" placeholder="Pick a username!" />
+    <input type="submit" name="login_submit" value="Log In">
+</form>
+
+
+<form name="callForm" id="call" action="#" onsubmit="return makeCall(this);">
+	<input type="text" name="number" placeholder="Enter user to dial!" />
+	<input type="submit" value="Call"/>
+</form>
+
+<div id="inCall"> <!-- Buttons for in call features -->
+	<button id="end" onclick="end()">End</button> <button id="mute" onclick="mute()">Mute</button> <button id="pause" onclick="pause()">Pause</button>
+</div>
+
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="https://cdn.pubnub.com/pubnub.min.js"></script>
+<script src="js/webrtc.js"></script>
+<script src="js/rtc-controller.js"></script>
+<script type="text/javascript">
+
+var video_out = document.getElementById("vid-box");
+var vid_thumb = document.getElementById("vid-thumb");
+
+function login(form) {
+	var phone = window.phone = PHONE({
+	    number        : form.username.value || "Anonymous", // listen on username line else Anonymous
+	    publish_key   : 'pub-c-5b60a353-a4c7-4821-b631-af304f64a7ec',
+	    subscribe_key : 'sub-c-8cc52846-606d-11e8-8fc9-4adc6d6a94eb',
+	    ssl: true
+	});	
+	var ctrl = window.ctrl = CONTROLLER(phone);
+	ctrl.ready(function(){
+		form.username.style.background="#55ff5b"; // Turn input green
+		form.login_submit.hidden="true";	// Hide login button
+		ctrl.addLocalStream(vid_thumb);		// Place local stream in div
+	});			// Called when ready to receive call
+	ctrl.receive(function(session){
+	    session.connected(function(session){ video_out.appendChild(session.video); });
+	    session.ended(function(session) { ctrl.getVideoElement(session.number).remove(); });
+	});	// Called on incoming call/call ended
+		
+
+	ctrl.videoToggled(function(session, isEnabled){
+		ctrl.getVideoElement(session.number).toggle(isEnabled); // Hide video is stream paused
+	});
+	ctrl.audioToggled(function(session, isEnabled){
+		ctrl.getVideoElement(session.number).css("opacity",isEnabled ? 1 : 0.75); // 0.75 opacity is audio muted
+	});
+	return false; //prevents form from submitting
+}
+
+function makeCall(form){
+		if (!window.phone) alert("Login First!");
+		var num = form.number.value;
+		if (phone.number()==num) return false; // No calling yourself!
+		ctrl.isOnline(num, function(isOn){		// Check if other user is listening for calls
+			if (isOn) ctrl.dial(num);		// Dial if they are online
+			else alert("User if Offline");	// Alert if not
+		});
+		return false; // So form does not submit
+}
+
+function end(){
+	ctrl.hangup();
+}
+
+
+function mute(){
+	var audio = ctrl.toggleAudio();
+	if (!audio) $("#mute").html("Unmute");
+	else $("#mute").html("Mute");
+}
+
+function pause(){
+	var video = ctrl.toggleVideo();
+	if (!video) $('#pause').html('Unpause');
+	else $('#pause').html('Pause');
+}
+
+</script>
+</html>
+
