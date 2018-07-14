@@ -57,6 +57,10 @@ function login(form) {
     		form.username.style.background="#55ff5b"; // Turn input green
 		form.login_submit.hidden="true";	// Hide login button
 		vid_thumb.appendChild(phone.video)	// Place local stream in div
+	});
+	phone.receive(function(session){
+		session.connected(function(session){ video_out.appendChild(session.video); });
+		session.ended(function(session){     alert(session.number + 'ended'); });
 	});	
 	/*var ctrl = window.ctrl = CONTROLLER(phone);
 	ctrl.ready(function(){
