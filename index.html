@@ -58,12 +58,12 @@ function login(form) {
 		form.login_submit.hidden="true";	// Hide login button
 		vid_thumb.appendChild(phone.video)	// Place local stream in div
 	});	
-	var ctrl = window.ctrl = CONTROLLER(phone);
-	/*ctrl.ready(function(){
+	/*var ctrl = window.ctrl = CONTROLLER(phone);
+	ctrl.ready(function(){
 		form.username.style.background="#55ff5b"; // Turn input green
 		form.login_submit.hidden="true";	// Hide login button
 		ctrl.addLocalStream(vid_thumb);		// Place local stream in div
-	});*/			// Called when ready to receive call
+	});			// Called when ready to receive call
 	ctrl.receive(function(session){
 	    session.connected(function(session){ video_out.appendChild(session.video); });
 	    session.ended(function(session) { ctrl.getVideoElement(session.number).remove(); });
@@ -75,7 +75,7 @@ function login(form) {
 	});
 	ctrl.audioToggled(function(session, isEnabled){
 		ctrl.getVideoElement(session.number).css("opacity",isEnabled ? 1 : 0.75); // 0.75 opacity is audio muted
-	});
+	});*/
 	return false; //prevents form from submitting
 }
 
