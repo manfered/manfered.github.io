@@ -52,13 +52,18 @@ function login(form) {
 	    publish_key   : 'pub-c-5b60a353-a4c7-4821-b631-af304f64a7ec',
 	    subscribe_key : 'sub-c-8cc52846-606d-11e8-8fc9-4adc6d6a94eb',
 	    ssl: true
+	});
+	phone.ready(function(){
+    		form.username.style.background="#55ff5b"; // Turn input green
+		form.login_submit.hidden="true";	// Hide login button
+		vid_thumb.appendChild(phone.video)	// Place local stream in div
 	});	
 	var ctrl = window.ctrl = CONTROLLER(phone);
-	ctrl.ready(function(){
+	/*ctrl.ready(function(){
 		form.username.style.background="#55ff5b"; // Turn input green
 		form.login_submit.hidden="true";	// Hide login button
 		ctrl.addLocalStream(vid_thumb);		// Place local stream in div
-	});			// Called when ready to receive call
+	});*/			// Called when ready to receive call
 	ctrl.receive(function(session){
 	    session.connected(function(session){ video_out.appendChild(session.video); });
 	    session.ended(function(session) { ctrl.getVideoElement(session.number).remove(); });
