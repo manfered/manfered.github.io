@@ -85,7 +85,7 @@ var PHONE = window.PHONE = function(config) {
         {urls: "stun:stun.voxgratia.org"},
         {urls: "stun:stun.xten.com"},
         {username : "7206330c-8867-11e8-9864-e4162d43b333", url: "stun:w1.xirsys.com", credential: "72063424-8867-11e8-9a9f-3096f1775e8c"},
-        {username : "7206330c-8867-11e8-9864-e4162d43b333", url: "turn:w1.xirsys.com:3478?transport=udp", credential: "72063424-8867-11e8-9a9f-3096f1775e8c"}
+        {username : "7206330c-8867-11e8-9864-e4162d43b333", url: "turn:w1.xirsys.com:80?transport=tcp", credential: "72063424-8867-11e8-9a9f-3096f1775e8c"}
     ] };
 
     // -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-
