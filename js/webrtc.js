@@ -85,7 +85,37 @@ var PHONE = window.PHONE = function(config) {
         {urls: "stun:stun.voxgratia.org"},
         {urls: "stun:stun.xten.com"},
 	{
+      		'urls': 'stun:w1.xirsys.com',
+      		'credential': '72063424-8867-11e8-9a9f-3096f1775e8c',
+      		'username': '7206330c-8867-11e8-9864-e4162d43b333'
+    	},
+	{
+      		'urls': 'turn:w1.xirsys.com:80?transport=udp',
+      		'credential': '72063424-8867-11e8-9a9f-3096f1775e8c',
+      		'username': '7206330c-8867-11e8-9864-e4162d43b333'
+    	},
+	{
       		'urls': 'turn:w1.xirsys.com:3478?transport=udp',
+      		'credential': '72063424-8867-11e8-9a9f-3096f1775e8c',
+      		'username': '7206330c-8867-11e8-9864-e4162d43b333'
+    	},
+	{
+      		'urls': 'turn:w1.xirsys.com:80?transport=tcp',
+      		'credential': '72063424-8867-11e8-9a9f-3096f1775e8c',
+      		'username': '7206330c-8867-11e8-9864-e4162d43b333'
+    	},
+	{
+      		'urls': 'turn:w1.xirsys.com:3478?transport=tcp',
+      		'credential': '72063424-8867-11e8-9a9f-3096f1775e8c',
+      		'username': '7206330c-8867-11e8-9864-e4162d43b333'
+    	},
+	{
+      		'urls': 'turns:w1.xirsys.com:443?transport=tcp',
+      		'credential': '72063424-8867-11e8-9a9f-3096f1775e8c',
+      		'username': '7206330c-8867-11e8-9864-e4162d43b333'
+    	},
+	{
+      		'urls': 'turns:w1.xirsys.com:5349?transport=tcp',
       		'credential': '72063424-8867-11e8-9a9f-3096f1775e8c',
       		'username': '7206330c-8867-11e8-9864-e4162d43b333'
     	}
