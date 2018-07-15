@@ -154,6 +154,14 @@ var img_out   = PUBNUB.$('video-thumbnail');
 var img_self  = PUBNUB.$('video-self');
 
 var phone     = window.phone = PHONE({
+    servers : [
+        {"username":"7206330c-8867-11e8-9864-e4162d43b333","url":"turn:w1.xirsys.com:80?transport=udp","credential":"72063424-8867-11e8-9a9f-3096f1775e8c"},
+        {"username":"7206330c-8867-11e8-9864-e4162d43b333","url":"turn:w1.xirsys.com:3478?transport=udp","credential":"72063424-8867-11e8-9a9f-3096f1775e8c"},
+        {"username":"7206330c-8867-11e8-9864-e4162d43b333","url":"turn:w1.xirsys.com:80?transport=tcp","credential":"72063424-8867-11e8-9a9f-3096f1775e8c"},
+        {"username":"7206330c-8867-11e8-9864-e4162d43b333","url":"turn:w1.xirsys.com:3478?transport=tcp","credential":"72063424-8867-11e8-9a9f-3096f1775e8c"},
+        {"username":"7206330c-8867-11e8-9864-e4162d43b333","url":"turns:w1.xirsys.com:443?transport=tcp","credential":"72063424-8867-11e8-9a9f-3096f1775e8c"},
+        {"username":"7206330c-8867-11e8-9864-e4162d43b333","url":"turns:w1.xirsys.com:5349?transport=tcp","credential":"72063424-8867-11e8-9a9f-3096f1775e8c"}
+    ],
     number        : my_number.number, // listen on this line
     publish_key   : 'pub-c-561a7378-fa06-4c50-a331-5c0056d0163c',
     subscribe_key : 'sub-c-17b7db8a-3915-11e4-9868-02ee2ddab7fe',
